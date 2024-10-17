@@ -1,12 +1,6 @@
 <template>
   <nav class="navbar">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-        <!-- eslint-disable-next-line vue/comment-directive -->
-        <!-- Add a logo or brand name here -->
-        <img  class="logo" src="@/assets/mhbc.png" alt="Brand Logo">
-      </a>
-    </div>
+    <div class="navbar-brand logo h-3rem"></div>
 
     <div class="navbar-menu" :class="{ 'is-active': isActive }">
       <div class="navbar-start">
