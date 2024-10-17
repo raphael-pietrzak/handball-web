@@ -1,4 +1,4 @@
-import GameCard from '@/components/GameCard.vue'
+// import GameCard from '@/components/GameCard.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -12,11 +12,11 @@ const routes = [
     name: 'login',
     component: LoginPage
   },
-  {
-    path: '/card',
-    name: 'card',
-    component: GameCard
-  },
+  // {
+  //   path: '/card',
+  //   name: 'card',
+  //   component: GameCard
+  // },
 ]
 
 const router = createRouter({
