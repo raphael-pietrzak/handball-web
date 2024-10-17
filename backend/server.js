@@ -32,33 +32,41 @@ sequelize.sync({ alter: true }) // Utilise { force: true } pour recréer les tab
         console.log('Matchs ajoutés avec succès :', matches);
     })
     .catch((error) => {
-        console.error('Erreur lors de la création des tables :', error);
+        console.error('Erreur lors de la création des tables');
     });
 
 
 // Middleware pour parser JSON
 app.use(express.json());
 
-// Route d'inscription
+// Route de register
 app.post('/register', async (req, res) => {
-    const { username, password, role } = req.body;
+    const { name, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     try {
-        const user = await User.create({ username, password: hashedPassword, role });
+        const user = await User.create({ name, email, password: hashedPassword });
         res.status(201).json(user);
     } catch (err) {
-        res.status(500).json({ error: 'Erreur lors de l\'inscription' });
+        res.status(500).json({ error: 'Erreur lors de la création de l\'utilisateur' });
     }
 });
+
 
 // Route de login
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    const user = await User.findOne({ where: { username } });
-    if (user && await bcrypt.compare(password, user.password)) {
+    console.log("#################################################");
+    console.log('username', username);
+    console.log('password', password);
+    const user = await User.findOne({ where: { email: username } });
+    console.log('user', user);
+    console.log('user.password', user.password);
+    if (user && password === user.password) {
         const token = jwt.sign({ id: user.id, role: user.role }, 'secret_key', { expiresIn: '1h' });
+        console.log('Token généré avec succès');
         res.json({ token });
     } else {
+        console.log('Identifiants invalides');
         res.status(401).json({ error: 'Identifiants invalides' });
     }
 });
@@ -71,9 +79,9 @@ app.get('/matches', async (req, res) => {
 
 // Route pour créer un nouveau match
 app.post('/matches', async (req, res) => {
-    const { equipe1, equipe2, date_match, heure_match } = req.body;
+    const { team1, team2, match_date, score } = req.body;
     try {
-        const match = await Match.create({ equipe1, equipe2, date_match, heure_match });
+        const match = await Match.create({ team1, team2, match_date, score });
         res.status(201).json(match);
     } catch (err) {
         res.status(500).json({ error: 'Erreur lors de la création du match' });
