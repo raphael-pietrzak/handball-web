@@ -3,7 +3,7 @@
     <h1>Upcoming Handball Matches</h1>
     <ul v-if="matches.length">
       <li v-for="match in matches" :key="match.id" class="match-item">
-        {{ match.team_home }} vs {{ match.team_away }} - {{ formatDate(match.date) }}
+        {{ match.team1 }} vs {{ match.team2 }} - {{ formatDate(match.match_date) }}
       </li>
     </ul>
     <p v-else>No matches available</p>
@@ -13,13 +13,20 @@
 <script>
 import axios from 'axios';
 
+import api from '../api/api';
+
 export default {
-  data() {
-    return {
-      matches: [], // Array to store match data
-    };
-  },
-  methods: {
+    data() {
+        return {
+            matches: []
+        };
+    },
+    created() {
+        api.getMatches().then(response => {
+            this.matches = response.data;
+        });
+    },
+    methods: {
     fetchMatches() {
       axios
         .get('https://api.handball.com/matches/upcoming') // Example API URL
@@ -39,6 +46,8 @@ export default {
     this.fetchMatches(); // Fetch data when the component is mounted
   },
 };
+
+
 </script>
 
 <style scoped>

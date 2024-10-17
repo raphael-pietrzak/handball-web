@@ -3,19 +3,19 @@ import LoginPage from '@/views/LoginPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import MatchesView from '@/views/MatchesView.vue'
 import HomeView from '@/views/HomeView.vue'
+import ProfileView from '@/views/ProfileView.vue'
+import ShopView from '@/views/ShopView.vue'
 
 const routes = [
-  {
-    path: '/',
-    redirect: "/login"
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: LoginPage
-  },
+  { path: '/', redirect: "/home" },
+  { path: '/login', name: 'login',component: LoginPage },
+  { path: '/signup', name: 'signup', component: LoginPage },
   { path: '/home', name: 'navbar', component: HomeView },
   { path: '/matches', name: 'matches', component: MatchesView },
+  { path: '/profile', name: 'profile', component: ProfileView },
+  { path: '/shop', name: 'shop', component: ShopView },
+
+
   // {
   //   path: '/card',
   //   name: 'card',

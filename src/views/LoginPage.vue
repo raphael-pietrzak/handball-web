@@ -1,14 +1,14 @@
 <script setup></script>
 
 <template>
-    
-<div class="flex">
+
+<div class="flex align-items-center justify-content-center">
     <div class="surface-section w-full md:w-6 p-6 md:p-2">
         <div class="mb-5">
             <div class="logo w-full h-15rem"></div>
             <div class="text-900 text-3xl font-medium mb-3">Bienvenue</div>
             <span class="text-600 font-medium mr-2">Pas de compte ?</span>
-            <a class="font-medium no-underline text-blue-500 cursor-pointer">Inscrivez-vous !</a>
+            <a class="font-medium no-underline text-blue-500 cursor-pointer" href="/signup">Inscrivez-vous !</a>
         </div>
         <div>
             <IftaLabel>                
@@ -32,11 +32,14 @@
             <Button label="Se connecter" icon="pi pi-user" class="w-full p-3"></Button>
         </div>
     </div>
-    <div class="hidden md:block w-6 logo"></div>
 </div>
 </template>
 
 <style scoped>
+html {
+    width: 100%;
+    height: 100%;
+}
 .logo {
     background-size: contain;
     background-repeat: no-repeat;
