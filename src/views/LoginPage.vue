@@ -3,7 +3,7 @@
 <template>
     
 <div class="flex">
-    <div class="surface-section w-full md:w-6 p-6 md:p-8">
+    <div class="surface-section w-full md:w-6 p-6 md:p-2">
         <div class="mb-5">
             <div class="logo w-full h-15rem"></div>
             <div class="text-900 text-3xl font-medium mb-3">Bienvenue</div>
@@ -35,3 +35,11 @@
     <div class="hidden md:block w-6 logo"></div>
 </div>
 </template>
+
+<style scoped>
+.logo {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+</style>
