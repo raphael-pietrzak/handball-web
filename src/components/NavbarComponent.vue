@@ -4,7 +4,7 @@
 
     <div class="navbar-menu" :class="{ 'is-active': isActive }">
       <div class="navbar-start">
-        <a class="navbar-item" href="https://www.montpellierhandball.com/boutique/fr/produits">Shop</a>
+        <a class="navbar-item" href="https://www.montpellierhandball.com/boutique/fr/accueil">Shop</a>
         <a class="navbar-item" href="/matches">Matches</a>
         <a class="navbar-item" href="/profil">Profil</a>
       </div>
