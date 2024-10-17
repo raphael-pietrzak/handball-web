@@ -1,7 +1,8 @@
 // import GameCard from '@/components/GameCard.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import NavbarComponent from '@/components/NavbarComponent.vue'
+import MatchesView from '@/views/MatchesView.vue'
+import HomeView from '@/views/HomeView.vue'
 
 const routes = [
   {
@@ -13,7 +14,8 @@ const routes = [
     name: 'login',
     component: LoginPage
   },
-  { path: '/navbar', name: 'navbar', component: NavbarComponent },
+  { path: '/home', name: 'navbar', component: HomeView },
+  { path: '/matches', name: 'matches', component: MatchesView },
   // {
   //   path: '/card',
   //   name: 'card',

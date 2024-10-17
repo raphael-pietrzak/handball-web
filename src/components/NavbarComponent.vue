@@ -1,10 +1,9 @@
 <template>
   <nav class="navbar">
-    <div class="navbar-brand logo h-3rem"></div>
+    <a class="navbar-brand logo h-3rem" href="/home"></a>
 
     <div class="navbar-menu" :class="{ 'is-active': isActive }">
       <div class="navbar-start">
-        <a class="navbar-item" href="/">Home</a>
         <a class="navbar-item" href="https://www.montpellierhandball.com/boutique/fr/accueil">Shop</a>
         <a class="navbar-item" href="/matches">Matches</a>
         <a class="navbar-item" href="/profil">Profil</a>
