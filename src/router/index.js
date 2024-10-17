@@ -1,6 +1,7 @@
 // import GameCard from '@/components/GameCard.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import NavbarComponent from '@/components/NavbarComponent.vue'
 
 const routes = [
   {
@@ -12,6 +13,7 @@ const routes = [
     name: 'login',
     component: LoginPage
   },
+  { path: '/navbar', name: 'navbar', component: NavbarComponent },
   // {
   //   path: '/card',
   //   name: 'card',
