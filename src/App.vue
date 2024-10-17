@@ -1,8 +1,4 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
   <router-view/>
 </template>
 
@@ -13,6 +9,11 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.logo {
+  background: url("https://s3.static-clubeo.com/250/uploads/mhbc-club/logo__76a9t2afi.png") 50% 50% / contain no-repeat;
+  background-position: center;
 }
 
 nav {
