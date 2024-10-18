@@ -1,12 +1,16 @@
 <template>
   <div class="matches-container">
     <h1>Handball - Match à venir</h1>
-    <DataView :value="products">
+    <DataView :value="matches">
       <template #list="slotProps">
-        <section class="flex flex-row gap-5" v-for="match in slotProps.items" :key="match.id">
-          <span class="font-bold text-2xl">{{ match.team1 }}</span>
-          <span class="font-bold text-6xl">{{ match.score }}</span>
-          <span class="font-bold text-2xl">{{ match.team2 }}</span>
+        <section class="flex flex-column" v-for="match in slotProps.items" :key="match.id">
+          <span class="w-full">{{ formatDate(match.match_date) }}</span>
+          <div class="flex flex-row w-full align-items-center justify-content-center">
+            <span class="font-bold w-4 text-2xl">{{ match.team1 }}</span>
+            <span class="font-bold text-4xl flex justify-content-center">{{ match.score }}</span>
+            <span class="font-bold w-4 text-2xl">{{ match.team2 }}</span>
+          </div>
+
         </section>
       </template>
       <template #empty>
@@ -28,10 +32,16 @@ export default {
       matches: []
     };
   },
-  created() {
+  mounted() {
     api.getMatches().then(response => {
       this.matches = response.data;
     });
+  },
+  methods: {
+    formatDate(dateString) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+      return new Date(dateString).toLocaleDateString(undefined, options);
+    },
   },
 };
 

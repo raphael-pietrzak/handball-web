@@ -1,9 +1,11 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 import api from '@/api/api'; // Assurez-vous d'importer axios ou une instance d'api
 
 const router = useRouter();
+const store = useStore();
 const user = ref({ username: '', password: '' });
 const errorMessage = ref(null);
 const loading = ref(false);
@@ -14,9 +16,10 @@ const login = async () => {
   try {
     const response = await api.login(user.value);
     console.log(response.data.token); // Afficher le token dans la console
+    store.commit('setUser', response.data.user); // Enregistrer l'utilisateur dans le store
     localStorage.setItem('token', response.data.token); // Enregistrer le token
     loading.value = false;
-    router.push('/dashboard'); // Rediriger vers une autre page après connexion
+    router.push('/'); // Rediriger vers une autre page après connexion
   } catch (error) {
     console.error(error);
     if (error.response && error.response.status === 401) {

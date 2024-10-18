@@ -4,7 +4,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { Sequelize, DataTypes } = require('sequelize');
 const cors = require('cors');
-app.use(cors());
+app.use(cors(
+    {
+        origin: "*"
+    }
+));
 
 
 const sequelize = require('./database');

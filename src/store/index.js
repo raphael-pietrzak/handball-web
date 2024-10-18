@@ -2,11 +2,17 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    matches: []
+    matches: [],
+    user: {
+      
+    }
   },
   getters: {
     getMatches(state) {
       return state.matches;
+    },
+    getUser(state) {
+      return state.user;
     }
   },
   mutations: {
@@ -22,6 +28,9 @@ export default createStore({
           life: 5000
         })
       }
+    },
+    setUser(state, user) {
+      if(typeof user == 'object') state.user = user;
     }
   },
   actions: {
