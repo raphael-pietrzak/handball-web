@@ -105,6 +105,7 @@ import ToggleSwitch from 'primevue/toggleswitch';
 import Popover from 'primevue/popover';
 import Drawer from 'primevue/drawer';
 import Tabs from 'primevue/tabs';
+import IftaLabel from 'primevue/iftalabel';
 
 const app = createApp(App);
 
@@ -151,6 +152,7 @@ app.component('DynamicDialog', DynamicDialog);
 app.component('Fieldset', Fieldset);
 app.component('FileUpload', FileUpload);
 app.component('Galleria', Galleria);
+app.component('IftaLabel', IftaLabel);
 app.component('Image', Image);
 app.component('Inplace', Inplace);
 app.component('InputMask', InputMask);
