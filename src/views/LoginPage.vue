@@ -6,22 +6,26 @@ import api from '@/api/api'; // Assurez-vous d'importer axios ou une instance d'
 const router = useRouter();
 const user = ref({ username: '', password: '' });
 const errorMessage = ref(null);
+const loading = ref(false);
 
 const login = async () => {
-    try {
-        const response = await api.login(user.value); 
-        console.log(response.data.token); // Afficher le token dans la console
-        localStorage.setItem('token', response.data.token); // Enregistrer le token
-        errorMessage.value = null;
-        router.push('/dashboard'); // Rediriger vers une autre page après connexion
-    } catch (error) {
-        console.error(error);
-        if (error.response && error.response.status === 401) {
-            errorMessage.value = "Identifiants invalides";
-        } else {
-            errorMessage.value = "Une erreur s'est produite. Veuillez réessayer.";
-        }
+  loading.value = true
+  try {
+    const response = await api.login(user.value);
+    console.log(response.data.token); // Afficher le token dans la console
+    localStorage.setItem('token', response.data.token); // Enregistrer le token
+    loading.value = false;
+    router.push('/dashboard'); // Rediriger vers une autre page après connexion
+  } catch (error) {
+    console.error(error);
+    if (error.response && error.response.status === 401) {
+      errorMessage.value = "Identifiants invalides";
+    } else {
+      errorMessage.value = "Une erreur s'est produite. Veuillez réessayer.";
     }
+  }
+
+  loading.value = false
 };
 </script>
 
@@ -32,21 +36,18 @@ const login = async () => {
         <div class="logo w-full h-15rem"></div>
         <div class="text-900 text-3xl font-medium mb-3">Bienvenue</div>
         <span class="text-600 font-medium mr-2">Pas de compte ?</span>
-        <a class="font-medium no-underline text-blue-500 cursor-pointer" href="/signup">Inscrivez-vous !</a>
+        <span class="font-medium underline p-blue-500 cursor-pointer" @click="this.$router.push('/signup')">Inscrivez-vous !</span>
       </div>
 
-      <!-- Affichage de l'erreur -->
-      <div v-if="errorMessage" class="text-red-500 mb-3">{{ errorMessage }}</div>
-
-      <div>
+      <div class="flex flex-column gap-3">
         <IftaLabel>
-          <label for="email2" class="block text-900 font-medium mb-2">Email</label>
-          <InputText v-model="user.username" id="email2" type="text" placeholder="Email address" class="w-full mb-3 p-3" />
+          <InputText v-model="user.username" id="email" class="w-full mb-3" :disabled="loading" />
+          <label for="email" class="block text-900 font-medium">Email</label>
         </IftaLabel>
 
         <IftaLabel>
-          <label for="password2" class="block text-900 font-medium mb-2">Mot de passe</label>
-          <InputText v-model="user.password" id="password2" type="password" placeholder="Password" class="w-full mb-3 p-3" />
+          <Password v-model="user.password" :feedback="false" input-id="password" class="w-full" :disabled="loading" />
+          <label for="password" class="block text-900 font-medium">Mot de passe</label>
         </IftaLabel>
 
         <div class="flex align-items-center justify-content-between mb-6">
@@ -57,19 +58,22 @@ const login = async () => {
           <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Mot de passe oublié</a>
         </div>
 
-        <Button label="Se connecter" icon="pi pi-user" class="w-full p-3" @click="login" />
+        <Button label="Se connecter" icon="pi pi-user" class="w-full p-3" @click="login" :loading="loading" />
+
+        <!-- Affichage de l'erreur -->
+        <Message v-if="errorMessage" icon="pi pi-times-circle" severity="error">{{ errorMessage }}</Message>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style>
 html {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 input#password {
-    width: 100% !important;
+  width: 100% !important;
 }
 </style>
