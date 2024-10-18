@@ -14,4 +14,11 @@ export default {
     register(user) {
         return api.post('/register', user);
     },
+    getProfile(token) {
+        return api.get('/user', {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+    }
 };
