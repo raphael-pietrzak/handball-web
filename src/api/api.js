@@ -33,5 +33,5 @@ export default {
     },
     register(user) {
         return api.post('/register', user);
-    },
+    }
 };

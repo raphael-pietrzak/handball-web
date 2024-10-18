@@ -41,12 +41,10 @@ app.use(express.json());
 
 // Route de register
 app.post('/register', async (req, res) => {
-    const { name, email, password } = req.body;
-    console.log("##############################################")
-    console.log('Création de l\'utilisateur :', name, email, password);
+    const { username, password, name } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     try {
-        const user = await User.create({ name, email, password: hashedPassword });
+        const user = await User.create({ name: name, email: username, password: hashedPassword, created_at: new Date() });
         res.status(201).json(user);
     } catch (err) {
         res.status(500).json({ error: 'Erreur lors de la création de l\'utilisateur' });
@@ -56,11 +54,16 @@ app.post('/register', async (req, res) => {
 
 
 
+
+
 // Route de login
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
     const user = await User.findOne({ where: { email: username } });
-    if (user && password === user.password) {
+    if (user) {
+        console.log('Utilisateur trouvé :', user.name);
+    }
+    if (user && bcrypt.compareSync(password, user.password)) {
         const token = jwt.sign({ id: user.id, role: user.role }, 'secret_key', { expiresIn: '1h' });
         console.log('Token généré avec succès');
         res.json({ token });
