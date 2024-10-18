@@ -7,6 +7,7 @@ const router = useRouter();
 const user = ref({ username: '', password: '' });
 const errorMessage = ref(null);
 const loading = ref(false);
+const rememberLogin = ref(false);
 
 const login = async () => {
   loading.value = true
@@ -52,8 +53,8 @@ const login = async () => {
 
         <div class="flex align-items-center justify-content-between mb-6">
           <div class="flex align-items-center">
-            <Checkbox id="rememberme2" :binary="true" v-model="checked2" class="mr-2"></Checkbox>
-            <label for="rememberme2">Se rappeler de moi</label>
+            <Checkbox id="rememberme" :binary="true" v-model="rememberLogin" class="mr-2"></Checkbox>
+            <label for="rememberme">Se rappeler de moi</label>
           </div>
           <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Mot de passe oublié</a>
         </div>
