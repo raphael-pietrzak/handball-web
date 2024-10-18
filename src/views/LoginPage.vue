@@ -68,9 +68,8 @@ html {
     width: 100%;
     height: 100%;
 }
-.logo {
-    background-size: contain;
-    background-repeat: no-repeat;
-}
 
+input#password {
+    width: 100% !important;
+}
 </style>
