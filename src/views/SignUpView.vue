@@ -4,12 +4,12 @@ import { useRouter } from 'vue-router';
 import api from '@/api/api'; // Assurez-vous d'importer axios ou une instance d'api
 
 const router = useRouter();
-const user = ref({ username: '', password: '' });
+const user = ref({ username: '', password: '', name: '' });
 const errorMessage = ref(null);
 
 const login = async () => {
     try {
-        const response = await api.login(user.value); 
+        const response = await api.register(user.value); 
         console.log(response.data.token); // Afficher le token dans la console
         localStorage.setItem('token', response.data.token); // Enregistrer le token
         errorMessage.value = null;
@@ -39,6 +39,13 @@ const login = async () => {
       <div v-if="errorMessage" class="text-red-500 mb-3">{{ errorMessage }}</div>
 
       <div>
+
+        <IftaLabel>
+          <label for="name" class="block text-900 font-medium mb-2">Nom</label>
+            <InputText v-model="user.name" id="name" type="text" placeholder="Nom" class="w-full mb-3 p-3" />   
+        </IftaLabel>
+
+
         <IftaLabel>
           <label for="email2" class="block text-900 font-medium mb-2">Email</label>
           <InputText v-model="user.username" id="email2" type="text" placeholder="Email address" class="w-full mb-3 p-3" />
