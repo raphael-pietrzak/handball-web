@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 
 import api from '../api/api';
 
@@ -27,23 +26,10 @@ export default {
         });
     },
     methods: {
-    fetchMatches() {
-      axios
-        .get('https://api.handball.com/matches/upcoming') // Example API URL
-        .then((response) => {
-          this.matches = response.data.matches; // Assuming the data contains a 'matches' array
-        })
-        .catch((error) => {
-          console.error('Error fetching matches:', error);
-        });
-    },
     formatDate(dateString) {
       const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
       return new Date(dateString).toLocaleDateString(undefined, options);
     },
-  },
-  mounted() {
-    this.fetchMatches(); // Fetch data when the component is mounted
   },
 };
 

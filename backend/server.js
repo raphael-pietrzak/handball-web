@@ -55,12 +55,7 @@ app.post('/register', async (req, res) => {
 // Route de login
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    console.log("#################################################");
-    console.log('username', username);
-    console.log('password', password);
     const user = await User.findOne({ where: { email: username } });
-    console.log('user', user);
-    console.log('user.password', user.password);
     if (user && password === user.password) {
         const token = jwt.sign({ id: user.id, role: user.role }, 'secret_key', { expiresIn: '1h' });
         console.log('Token généré avec succès');

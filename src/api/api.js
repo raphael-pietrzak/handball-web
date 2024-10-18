@@ -21,11 +21,14 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:3000', // Assurez-vous que le port est correct
+    baseURL: 'http://localhost:3000',
 });
 
 export default {
     getMatches() {
-        return api.get('/matches'); // Assurez-vous que l'endpoint est correct
+        return api.get('/matches');
+    },
+    login(credentials) {
+        return api.post('/login', credentials);
     }
 };
