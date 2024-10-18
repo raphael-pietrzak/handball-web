@@ -5,11 +5,12 @@ import MatchesView from '@/views/MatchesView.vue'
 import HomeView from '@/views/HomeView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import ShopView from '@/views/ShopView.vue'
+import SignUpView from '@/views/SignUpView.vue'
 
 const routes = [
   { path: '/', redirect: "/home" },
   { path: '/login', name: 'login',component: LoginPage },
-  { path: '/signup', name: 'signup', component: LoginPage },
+  { path: '/signup', name: 'signup', component: SignUpView },
   { path: '/home', name: 'navbar', component: HomeView },
   { path: '/matches', name: 'matches', component: MatchesView },
   { path: '/profile', name: 'profile', component: ProfileView },

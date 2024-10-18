@@ -42,6 +42,8 @@ app.use(express.json());
 // Route de register
 app.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
+    console.log("##############################################")
+    console.log('Création de l\'utilisateur :', name, email, password);
     const hashedPassword = await bcrypt.hash(password, 10);
     try {
         const user = await User.create({ name, email, password: hashedPassword });
@@ -50,6 +52,8 @@ app.post('/register', async (req, res) => {
         res.status(500).json({ error: 'Erreur lors de la création de l\'utilisateur' });
     }
 });
+
+
 
 
 // Route de login
