@@ -13,7 +13,7 @@ const login = async () => {
         console.log(response.data.token); // Afficher le token dans la console
         localStorage.setItem('token', response.data.token); // Enregistrer le token
         errorMessage.value = null;
-        router.push('/dashboard'); // Rediriger vers une autre page après connexion
+        router.push('/'); // Rediriger vers une autre page après connexion
     } catch (error) {
         console.error(error);
         if (error.response && error.response.status === 401) {
