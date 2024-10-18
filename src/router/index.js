@@ -3,6 +3,7 @@ import LoginPage from '@/views/LoginPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import MatchesView from '@/views/MatchesView.vue'
 import HomeView from '@/views/HomeView.vue'
+import ProfilePage from '@/views/ProfilePage.vue'
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginPage
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfilePage
   },
   { path: '/home', name: 'navbar', component: HomeView },
   { path: '/matches', name: 'matches', component: MatchesView },
