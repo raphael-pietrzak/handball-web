@@ -1,29 +1,38 @@
 # mhbc-web
 
+
+## Objectives
+
+- Club de handball créé en 1901
+- 180 licenciés
+- 11 catégories évoluant du niveau départemental à régional
+
+
+Objectif : 
+
+- Créer un site internet en répondant au besoin du club
+- Pour les licenciés :
+- Calendrier des matchs par catégorie 
+- Calendrier des évènements
+- Inscription aux évènements / au club
+- Achat / réservation de goodies sur la boutique du club
+- Résultat des matchs, à minima du week-end passé
+
+Pour l’association
+
+- Créer la date, l’heure et le lieu des matchs
+- Créer la date, l’heure et le lieu des évènements
+- Suivi des paiements
+- Disposer d’un récapitulatif des inscrits
+
+
+
 ## Project setup
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
@@ -34,6 +43,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ```
 cd backend
 npm install
+npm run serve
 ```
 
 ### Install PostgreSQL
@@ -59,3 +69,14 @@ exit
 ```bash
 npm start
 ```
+
+## Preview
+
+Home page
+![alt text](<src/assets/readme/Capture d’écran 2024-10-18 à 19.41.55.png>)
+
+Matchs page
+![alt text](<src/assets/readme/Capture d’écran 2024-10-18 à 19.42.00.png>)
+
+Login page
+![alt text](<src/assets/readme/Capture d’écran 2024-10-18 à 19.42.09.png>)
